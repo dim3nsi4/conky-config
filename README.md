@@ -1,6 +1,6 @@
 # conky-config
 
-My personal conky configuration files.
+My personal conky configuration files for dark desktop backgrounds.
 
 To use them, download the `conkyrc_\*` files and the associated scripts and put them under `~/.conky.d`. You can run any of those configuration files independently. For example, you can run `conkyrc_clock` using:
 
