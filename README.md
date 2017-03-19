@@ -15,3 +15,5 @@ Note that you probably will have to modify a few things in the configuration fil
 - `conkyrc_weather_simple`: you need to change the [ICAO](https://en.wikipedia.org/wiki/International_Civil_Aviation_Organization_airport_code) code corresponding to the city you wish to monitor;
 
 Well deserved credits are due to the original authors of the scripts `paconky` and `rings_monitoring.lua`, which have been modified for use with this conky setup.
+
+![alt tag](screenshot-conky.png)
