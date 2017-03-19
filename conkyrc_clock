@@ -1,0 +1,87 @@
+-- Conky configuration file
+--
+-- Copyright (C) 2017 Pierre Seimandi
+-- Under GPL License v3.0 and after.
+--
+-- Description:
+--
+-- Shows the current time and date on the desktop.
+--
+-- To run this configuration, use the following command:
+-- conky -c "/path/to/this/file/conkyrc_clock"
+--
+-- Depends on conky (obviously) and the Verdana font.
+--
+-- Time-stamp: <2017-03-19 19:42:20 seimandp>
+-- –—————————————————————————————————————————————————————————
+
+
+conky.config = {
+    background              = true,
+    alignment               = 'bottom_right',
+    update_interval         = 1,
+    cpu_avg_samples         = 1,
+    net_avg_samples         = 2,
+
+    temperature_unit        = 'celsius',
+    short_units             = true,
+    format_human_readable   = true,
+
+    border_inner_margin     = 1,
+    border_outer_margin     = 1,
+    gap_x                   = 70,
+    gap_y                   = 25,
+
+    imlib_cache_size        = 0,
+    double_buffer           = true,
+    no_buffers              = true,
+    text_buffer_size        = 2048,
+
+    own_window              = true,
+    own_window_type         = 'override',
+    own_window_transparent  = true,
+    own_window_argb_visual  = true,
+    own_window_type         = 'normal',
+    own_window_class        = 'conky-semi',
+    own_window_hints        = 'undecorated,sticky,skip_taskbar,skip_pager,below',
+
+    draw_shades             = false,
+    draw_outline            = false,
+    draw_borders            = false,
+    draw_graph_borders      = false,
+
+    font                    = "Verdana:pixelsize=13",
+    default_color           = 'gray90',
+    default_shade_color     = 'ffffff',
+    override_utf8_locale    = true,
+    use_xft                 = true,
+    xftalpha                = 0.9,
+    uppercase               = false,
+}
+
+
+conky.text = [[
+${offset 30}#
+${font :pixelsize=150}#
+${time %H}#
+${offset 10}#
+${voffset 50}#
+${font Verdana:pixelsize=130}#
+${color goldenrod}#
+${time %M}#
+${font}#
+${color}#
+
+${goto 0}#
+${font :pixelsize=20}#
+${voffset 20}#
+${time %A} #
+${color goldenrod}#
+${time %d} #
+${color}#
+${time %b} #
+${color goldenrod}#
+${time %Y}#
+${font}#
+${color}#
+]]

@@ -1,0 +1,145 @@
+-- Conky configuration file
+--
+-- Copyright (C) 2017 Pierre Seimandi
+-- Under GPL License v3.0 and after.
+--
+-- Description:
+--
+-- Shows the network activity on the desktop.
+--
+-- There is currently two network that are monitored enp11s0 and
+-- enp13s0, which are the name of my wired connections. Obviously, you
+-- must replace them by the connections you wish to monitor. You can
+-- see the name of the connection available on your computer using
+-- 'ifconfig'.
+--
+-- To run it, use the following command:
+-- conky -c "/path/to/this/file/conkyrc_network"
+--
+-- Depends on conky (obviously) and on the fonts Verdana and
+-- DejaVu Sans Mono.
+--
+-- Time-stamp: <2017-03-19 19:42:20 seimandp>
+-- –—————————————————————————————————————————————————————————
+
+
+conky.config = {
+    background              = true,
+    alignment               = 'bottom_left',
+    update_interval         = 1,
+    cpu_avg_samples         = 1,
+    net_avg_samples         = 2,
+
+    temperature_unit        = 'celsius',
+    short_units             = true,
+    format_human_readable   = true,
+
+    border_inner_margin     = 0,
+    border_outer_margin     = 0,
+    gap_x                   = 70,
+    gap_y                   = 185,
+    minimum_width           = 550,
+
+    imlib_cache_size        = 0,
+    double_buffer           = true,
+    no_buffers              = true,
+    text_buffer_size        = 2048,
+
+    own_window              = true,
+    own_window_type         = 'override',
+    own_window_transparent  = true,
+    own_window_argb_visual  = true,
+    own_window_type         = 'normal',
+    own_window_class        = 'conky-semi',
+    own_window_hints        = 'undecorated,sticky,skip_taskbar,skip_pager,below',
+    border_inner_margin     = 1,
+    border_outer_margin     = 1,
+
+    draw_shades             = false,
+    draw_outline            = false,
+    draw_borders            = false,
+    draw_graph_borders      = false,
+
+    font                    = "DejaVu Sans Mono:pixelsize=12",
+    default_color           = 'gray80',
+    default_shade_color     = 'ffffff',
+    override_utf8_locale    = true,
+    use_xft                 = true,
+    xftalpha                = 0.9,
+    uppercase               = false,
+}
+
+
+conky.text = [[
+${font Verdana:pixelsize=14:style=bold}#
+${color goldenrod}#
+NETWORK#
+${font}#
+${color}#
+
+${if_existing /sys/class/net/enp11s0/operstate up}#
+#
+${voffset 10}#
+${offset 32}#
+enp11s0#
+${goto 115}#
+${font PizzaDude Bullets:pixelsize=15}#
+O#
+${font}#
+${goto 140}#
+${upspeedf enp11s0} Kb/s #
+${goto 250}#
+[${totalup enp11s0}]#
+${goto 315}#
+${color gray50}#
+${upspeedgraph enp11s0 12,200 1a1a1a a9a9a9}#
+${color}#
+
+${voffset 5}#
+${goto 115}#
+${font PizzaDude Bullets:pixelsize=15}#
+U#
+${font}#
+${goto 140}#
+${downspeedf enp11s0} Kb/s #
+${goto 250}#
+[${totaldown enp11s0}]#
+${goto 315}#
+${color gray50}#
+${downspeedgraph enp11s0 12,200 1a1a1a a9a9a9}#
+${color}#
+${endif}
+
+${if_existing /sys/class/net/enp13s0/operstate up}#
+#
+${voffset 10}#
+${offset 32}#
+enp13s0#
+${goto 115}#
+${font PizzaDude Bullets:pixelsize=15}#
+O#
+${font}#
+${goto 140}#
+${upspeedf enp13s0} Kb/s #
+${goto 250}#
+[${totalup enp13s0}]#
+${goto 315}#
+${color gray50}#
+${upspeedgraph enp13s0 12,200 1a1a1a a9a9a9}#
+${color}#
+
+${voffset 5}#
+${goto 115}#
+${font PizzaDude Bullets:pixelsize=15}#
+U#
+${font}#
+${goto 140}#
+${downspeedf enp13s0} Kb/s #
+${goto 250}#
+[${totaldown enp13s0}]#
+${goto 315}#
+${color gray50}#
+${downspeedgraph enp13s0 12,200 1a1a1a a9a9a9}#
+${color}#
+${endif}#
+]]

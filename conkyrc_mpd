@@ -1,0 +1,127 @@
+-- Conky configuration file
+--
+-- Copyright (C) 2017 Pierre Seimandi
+-- Under GPL License v3.0 and after.
+--
+-- Description:
+--
+-- Shows the MPD track currently played (if MPD is active). Through
+-- the python script 'mpd_cover.py', it also tries to find and
+-- download the corresponding album cover (if it's not already done).
+--
+-- The script is assumed to be located under
+-- "~/.conky.d/python.d/". If that's not the case, change the path in
+-- this configuration file.
+--
+-- To run this configuration, use the following command:
+-- conky -c "/path/to/this/file/conkyrc_mpd"
+--
+-- Depends on conky (obviously), MPD, Python 3 and on the fonts
+-- Verdana and DejaVu Sans Mono.
+--
+-- Time-stamp: <2017-03-19 19:42:20 seimandp>
+-- –—————————————————————————————————————————————————————————
+
+
+conky.config = {
+    background              = true,
+    alignment               = 'top_left',
+    update_interval         = 0.25,
+    cpu_avg_samples         = 1,
+    net_avg_samples         = 2,
+
+    temperature_unit        = 'celsius',
+    short_units             = true,
+    format_human_readable   = true,
+
+    border_inner_margin     = 0,
+    border_outer_margin     = 0,
+    gap_x                   = 70,
+    gap_y                   = 70,
+    minimum_width           = 350,
+
+    imlib_cache_size        = 0,
+    double_buffer           = true,
+    no_buffers              = true,
+    text_buffer_size        = 2048,
+
+    own_window              = true,
+    own_window_type         = 'override',
+    own_window_transparent  = true,
+    own_window_argb_visual  = true,
+    own_window_type         = 'normal',
+    own_window_class        = 'conky-semi',
+    own_window_hints        = 'undecorated,sticky,skip_taskbar,skip_pager,below',
+    border_inner_margin     = 0,
+    border_outer_margin     = 0,
+
+    draw_shades             = false,
+    draw_outline            = false,
+    draw_borders            = false,
+    draw_graph_borders      = false,
+
+    font                    = "DejaVu Sans Mono:pixelsize=12",
+    default_color           = 'gray80',
+    default_shade_color     = 'ffffff',
+    override_utf8_locale    = true,
+    use_xft                 = true,
+    xftalpha                = 0.9,
+    uppercase               = false,
+}
+
+conky.text = [[
+${if_mpd_playing}#
+${offset 105}#
+${color white}#
+${scroll 28 1 ${mpd_title}}#
+${alignr}#
+${color grey60}#
+[${mpd_track}]#
+
+${voffset 2}#
+${font :pixelsize=10}#
+${offset 105}#
+${color goldenrod}#
+${scroll 40 1 ${mpd_artist}}#
+
+${offset 105}#
+${color}#
+${scroll 40 1 ${mpd_album}}#
+${font}#
+
+${voffset 2}#
+${offset 105}#
+${color gray50}#
+${mpd_bar 4,245}#
+
+${voffset 2}#
+${offset 105}#
+${font :pixelsize=10}#
+${if_match "${mpd_status}" == "Playing"}#
+${color LawnGreen}#
+${mpd_status}#
+${else}#
+${color OrangeRed}#
+${mpd_status}#
+${endif}#
+${alignr}#
+${color}#
+${mpd_elapsed} / ${mpd_length}#
+
+${font :pixelsize=10}#
+${offset 105}#
+${if_match "${mpd_repeat}" == "On"}#
+${color}#
+Repeat#
+${if_match "${mpd_random}" == "On"}#
+, #
+${endif}#
+${endif}#
+${if_match "${mpd_random}" == "On"}#
+${color}#
+Random#
+${endif}#
+#
+${execpi 1 ~/.conky.d/python.d/mpd_cover.py}
+${endif}
+]]
