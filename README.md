@@ -6,7 +6,7 @@ To use them, download the `conkyrc_\*` files and the associated scripts and put 
 
 `conky -c /path/to/file/conkyrc_clock`
 
-The file `conkyrc_update` is meant to be used on Archlinux system only.
+The file `conkyrc_updates` is meant to be used on Archlinux system only.
 
 Note that you probably will have to modify a few things in the configuration files and scripts. Notably: 
 
