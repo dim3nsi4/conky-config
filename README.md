@@ -15,7 +15,7 @@ Note that you probably will have to modify a few things in the configuration fil
 - `rings_monitoring.lua`: this is the script called by `conkyrc_monitoring` to display ressources (cpu, memory) usage visually. It is setup for a 4 CPU system. If that's not adapted to your system, change it;
 - `conkyrc_weather_simple`: you need to change the [ICAO](https://en.wikipedia.org/wiki/International_Civil_Aviation_Organization_airport_code) code corresponding to the city you wish to monitor;
 
-The fonts `DejaVu Sans Monou` and `Verdana` are used more or less in all the configuration files. `conkyrc_network` also use the font `PizzaDude Bullets` to display the upload and download arrows.
+The fonts `DejaVu Sans Mono` and `Verdana` are used more or less in all the configuration files. `conkyrc_network` also use the font `PizzaDude Bullets` to display the upload and download arrows.
 
 Well deserved credits are due to the original authors of the scripts `paconky` and `rings_monitoring.lua`, which have been modified for use with this conky setup.
 
