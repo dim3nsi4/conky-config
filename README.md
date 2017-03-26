@@ -46,8 +46,7 @@ The fonts `DejaVu Sans Mono` and `Verdana` are used more or less in
 all the configuration files. `conkyrc_network` also use the font
 `PizzaDude Bullets` to display the upload and download arrows.
 
-Well deserved credits are due to the original author of `paconky`,
-which have been modified (more or less heavily) for use with this
-conky setup.
+Credits to the original author of `paconky`, which have been modified
+for use with this conky setup.
 
 ![screenshot-conky-config](screenshot-conky.png)
