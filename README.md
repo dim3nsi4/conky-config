@@ -2,21 +2,52 @@
 
 My personal conky configuration files for dark desktop backgrounds.
 
-To use them, download the `conkyrc_\*` files and the associated scripts and put them under `~/.conky.d`. The `.covers` directory must be placed in your home directory if you plan to use `conkyrc_mpd`. You can run any of those configuration files independently. For example, you can run `conkyrc_clock` using:
 
-`conky -c /path/to/file/conkyrc_clock`
+## Installation
 
-The file `conkyrc_updates` is meant to be used on Archlinux system only.
+Download the `.conky.d/` and `.covers/` directories and put them in
+your HOME directory. `.conky.d/` contains all the conky configuration
+files and the associated scripts, `.covers/` is used by `conkyrc_mpd`
+to save the downloaded covers.
 
-Note that you probably will have to modify a few things in the configuration files and scripts. Notably: 
+Each conkyrc file can be run independently. For example, you can run
+`conkyrc_clock` using:
 
-- `conkyrc_network`: you need to change the name of the interface you wish to monitor (currently enp11s0 and enp13s0). You can find the name of your interfaces using `ifconfig`;
-- `conkyrc_monitoring`: you need to change the name of the hard drives you wish to monitor. Most names are standard, however for my setup there is for example a drive mounted on '/mnt/Storage' that will probably be missing on your system;
-- `rings_monitoring.lua`: this is the script called by `conkyrc_monitoring` to display ressources (cpu, memory) usage visually. It is setup for a 4 CPU system. If that's not adapted to your system, change it;
-- `conkyrc_weather_simple`: you need to change the [ICAO](https://en.wikipedia.org/wiki/International_Civil_Aviation_Organization_airport_code) code corresponding to the city you wish to monitor;
+`conky -c ~/.conky.d/conkyrc_clock`
 
-The fonts `DejaVu Sans Mono` and `Verdana` are used more or less in all the configuration files. `conkyrc_network` also use the font `PizzaDude Bullets` to display the upload and download arrows.
+Note that `conkyrc_updates` is meant for Archlinux system only (it
+uses the package manager `pacman`).
 
-Well deserved credits are due to the original authors of the scripts `paconky` and `rings_monitoring.lua`, which have been modified for use with this conky setup.
 
-![alt tag](screenshot-conky.png)
+## Configuration
+
+Several conkyrc files uses external scripts, written either in Python
+3 or Lua. Since the Lua scripts uses the cairo library, conky needs
+to be compile with both Lua and cairo support.
+
+
+In addition, some scripts must be tweaked for your own system. More
+specifically:
+
+- `conkyrc_cpu` assumes the system has 4 CPU and `conky_disk` is setup
+  for a system with `/root`, `/var`, `/home`, `/boot` on different
+  partitions and with an additional disk mounted on `/mnt/Storage`. As
+  a result, you will have to adapt these configuration file and the
+  associated Lua scripts to your system specifications.
+- `conkyrc_network` monitors two wired interfaces named enp11s0 and
+  enp13s0. Adapt those names to match your interfaces (you can list
+  them using `ifconfig`).
+- In `conkyrc_weather_simple`, you need to change
+  the
+  [ICAO](https://en.wikipedia.org/wiki/International_Civil_Aviation_Organization_airport_code) code
+  corresponding to the city you wish to monitor;
+
+The fonts `DejaVu Sans Mono` and `Verdana` are used more or less in
+all the configuration files. `conkyrc_network` also use the font
+`PizzaDude Bullets` to display the upload and download arrows.
+
+Well deserved credits are due to the original author of `paconky`,
+which have been modified (more or less heavily) for use with this
+conky setup.
+
+![screenshot-conky-config](screenshot-conky.png)

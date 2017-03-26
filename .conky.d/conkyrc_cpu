@@ -1,0 +1,92 @@
+-- Conky configuration file
+--
+-- Copyright (C) 2017 Pierre Seimandi
+-- Under GPL License v3.0 and after.
+--
+-- Description:
+--
+-- Shows the processes using the most cpu. Also display visually the
+-- percentage of cpu used as bars with a lua script.
+--
+-- Depends on conky with LUA and CAIRO support, LUA and on the fonts
+-- Verdana and DejaVu Sans Mono.
+--
+-- Time-stamp: <2017-03-19 19:42:20 seimandp>
+-- –—————————————————————————————————————————————————————————
+
+
+conky.config = {
+    background              = true,
+    alignment               = 'bottom_left',
+    update_interval         = 2,
+    cpu_avg_samples         = 1,
+    net_avg_samples         = 2,
+
+    temperature_unit        = 'celsius',
+    short_units             = true,
+    format_human_readable   = true,
+
+    border_inner_margin     = 0,
+    border_outer_margin     = 0,
+    gap_x                   = 50,
+    gap_y                   = 50,
+    minimum_width           = 300,
+    minimum_height          = 100,
+
+    imlib_cache_size        = 0,
+    double_buffer           = true,
+    no_buffers              = true,
+    text_buffer_size        = 2048,
+
+    own_window              = true,
+    own_window_type         = 'override',
+    own_window_transparent  = true,
+    own_window_argb_visual  = true,
+    own_window_type         = 'normal',
+    own_window_class        = 'conky-semi',
+    own_window_hints        = 'undecorated,sticky,skip_taskbar,skip_pager,below',
+
+    draw_shades             = false,
+    draw_outline            = false,
+    draw_borders            = false,
+    draw_graph_borders      = false,
+
+    font                    = "DejaVu Sans Mono:pixelsize=12",
+    default_color           = 'gray80',
+    default_shade_color     = 'ffffff',
+    override_utf8_locale    = true,
+    use_xft                 = true,
+    xftalpha                = 0.9,
+    uppercase               = false,
+
+    lua_load                = '~/.conky.d/lua.d/monitoring_bars.lua',
+    lua_draw_hook_post      = 'conky_cpu',
+}
+
+conky.text = [[
+${voffset 15}#
+${offset 45}#
+${font Verdana:pixelsize=14:style=bold}#
+${color goldenrod}#
+CPU#
+#
+${voffset -2}#
+${font DejaVu Sans Mono:pixelsize=12}#
+${color grey80}#
+${goto 100}[${top pid 1}]${goto 160}${top name 1}${goto 250}${top cpu 1}%#
+
+${color grey70}#
+${goto 100}[${top pid 2}]${goto 160}${top name 2}${goto 250}${top cpu 2}%#
+
+${color grey60}#
+${goto 100}[${top pid 3}]${goto 160}${top name 3}${goto 250}${top cpu 3}%#
+
+${color grey50}#
+${goto 100}[${top pid 4}]${goto 160}${top name 4}${goto 250}${top cpu 4}%#
+
+${color grey40}#
+${goto 100}[${top pid 5}]${goto 160}${top name 5}${goto 250}${top cpu 5}%#
+
+${color grey30}#
+${goto 100}[${top pid 6}]${goto 160}${top name 6}${goto 250}${top cpu 6}%#
+]]
