@@ -36,9 +36,9 @@ conky.config = {
 
     border_inner_margin     = 0,
     border_outer_margin     = 0,
-    gap_x                   = 70,
-    gap_y                   = 185,
-    minimum_width           = 550,
+    gap_x                   = 45,
+    gap_y                   = 160,
+    minimum_width           = 490,
 
     imlib_cache_size        = 0,
     double_buffer           = true,
@@ -52,8 +52,6 @@ conky.config = {
     own_window_type         = 'normal',
     own_window_class        = 'conky-semi',
     own_window_hints        = 'undecorated,sticky,skip_taskbar,skip_pager,below',
-    border_inner_margin     = 1,
-    border_outer_margin     = 1,
 
     draw_shades             = false,
     draw_outline            = false,
@@ -76,35 +74,43 @@ ${color goldenrod}#
 NETWORK#
 ${font}#
 ${color}#
+${font DejaVu Sans Mono:pixelsize=12:style=bold}#
+${alignr}#
+${if_up tun0}#
+${color Seagreen2}VPN is up${color}#
+${else}#
+${color Darkorange2}VPN is down${color}#
+${endif}#
+${font}#
 
 ${if_existing /sys/class/net/enp11s0/operstate up}#
 #
 ${voffset 10}#
 ${offset 32}#
 enp11s0#
-${goto 115}#
+${goto 100}#
 ${font PizzaDude Bullets:pixelsize=15}#
 O#
 ${font}#
-${goto 140}#
+${goto 125}#
 ${upspeedf enp11s0} Kb/s #
-${goto 250}#
+${goto 220}#
 [${totalup enp11s0}]#
-${goto 315}#
+${goto 290}#
 ${color gray50}#
 ${upspeedgraph enp11s0 12,200 1a1a1a a9a9a9}#
 ${color}#
 
 ${voffset 5}#
-${goto 115}#
+${goto 100}#
 ${font PizzaDude Bullets:pixelsize=15}#
 U#
 ${font}#
-${goto 140}#
+${goto 125}#
 ${downspeedf enp11s0} Kb/s #
-${goto 250}#
+${goto 220}#
 [${totaldown enp11s0}]#
-${goto 315}#
+${goto 290}#
 ${color gray50}#
 ${downspeedgraph enp11s0 12,200 1a1a1a a9a9a9}#
 ${color}#
@@ -115,29 +121,29 @@ ${if_existing /sys/class/net/enp13s0/operstate up}#
 ${voffset 10}#
 ${offset 32}#
 enp13s0#
-${goto 115}#
+${goto 100}#
 ${font PizzaDude Bullets:pixelsize=15}#
 O#
 ${font}#
-${goto 140}#
+${goto 125}#
 ${upspeedf enp13s0} Kb/s #
-${goto 250}#
+${goto 220}#
 [${totalup enp13s0}]#
-${goto 315}#
+${goto 290}#
 ${color gray50}#
 ${upspeedgraph enp13s0 12,200 1a1a1a a9a9a9}#
 ${color}#
 
 ${voffset 5}#
-${goto 115}#
+${goto 100}#
 ${font PizzaDude Bullets:pixelsize=15}#
 U#
 ${font}#
-${goto 140}#
+${goto 125}#
 ${downspeedf enp13s0} Kb/s #
-${goto 250}#
+${goto 220}#
 [${totaldown enp13s0}]#
-${goto 315}#
+${goto 290}#
 ${color gray50}#
 ${downspeedgraph enp13s0 12,200 1a1a1a a9a9a9}#
 ${color}#
